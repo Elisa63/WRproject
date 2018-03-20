@@ -1,0 +1,16 @@
+<div *ngIf="!name; else forminfo">
+
+
+        <div class="form-group">
+            <form [formGroup]="rForm" (ngSubmit)="addPost()" class="form-inline-right" >
+              <label for="pseudo">
+                <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">{{ titleAlert }}</div>
+                  <input type="text" formControlName="name" id="InputPseudo" placeholder="Pseudo">
+              </label>
+
+            <button type="submit" class="btn btn-default" value="Submit" [disabled]="!rForm.valid">
+                OK
+            </button>
+          </form>
+    </div>
+  </div>

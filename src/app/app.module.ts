@@ -1,24 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ChartsComponent } from './charts/charts.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NavBarComponent} from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { PseudoFormComponent } from './pseudo-form/pseudo-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ChartsComponent,
-    NavBarComponent
+    NavBarComponent,
+    PseudoFormComponent
   ],
 
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
