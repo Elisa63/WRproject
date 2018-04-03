@@ -1,14 +1,14 @@
-<div *ngIf="!name; else forminfo">
+<div>
+  <div class="form-group">
+    <form [formGroup]="pseudoForm" (ngSubmit)="setPseudo()" class="form-inline-right" >
+      <label for="pseudo">
+        <div class="alert" *ngIf="!pseudoForm.controls['pseudo'].valid && pseudoForm.controls['pseudo'].touched">
+          {{ titleAlert }}
+        </div>
+        <input type= "text" id="pseudo" name="pseudo" formControlName="pseudo" placeholder="Pseudo">
+      </label>
 
-
-        <div class="form-group">
-            <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" class="form-inline-right" >
-              <label for="pseudo">
-                <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">{{ titleAlert }}</div>
-                  <input type= "text" class="txt" id="Name" placeholder="Pseudo" [(ngModel)]="name" >  </label>
-                <span> Your Pseudo {{ name }}</span>
-
-            <button  type="submit" class="btn" value={{ btnText}} (click)="addPseudo" [disabled]="!rForm.valid">Submit</button>
-          </form>
-    </div>
+      <button  type="submit" class="btn btn-primary" [disabled]="pseudoForm.pristine || !pseudoForm.valid">Submit</button>
+    </form>
   </div>
+</div>

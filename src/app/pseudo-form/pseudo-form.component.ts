@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-pseudo-form',
   templateUrl: './pseudo-form.component.html',
@@ -8,43 +10,31 @@ import { FormsModule } from '@angular/forms';
 })
 export class PseudoFormComponent implements OnInit {
 
-  rForm: FormGroup;
-  nameText:string = 'Mon Pseudo';
-  name = [];
-  btnText: 'Submit';
+  pseudoForm: FormGroup;
   titleAlert:string = 'Pseudo is required';
 
-  constructor(private fb: FormBuilder) {
-      this.rForm = fb.group({
-        'name': [null, Validators.required],
+
+
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
+      this.pseudoForm = fb.group({
+        'pseudo': [null, Validators.required],
       });
    }
 
 
  ngOnInit() {
-   console.log(this.rForm.get('submit'));
 
-  }
-
+ }
 
 
-  addPseudo() {
-  /*alert(this.fb['name']);*/
-  this.name.push(this.nameText);
-  this.nameText = '';
-  /* console.log(this.rForm.get('name'));*/
+  setPseudo() {
+   const pseudo = this.pseudoForm.value.pseudo;
 
-  /*  this.rForm.get('submit').valueChanges.subscribe(
-      (submit) => {
-        if (submit == 'name') {
-            this.rForm.get('name').setValidators([Validators.required]),
-            this.titleAlert = "Pseudo is required";
-        } else {
-            this.rForm.get('name').setValidators(Validators.required);
-        }
-      this.rForm.get('name').updateValueAndValidity();
-      }
-    )
-*/ }
+   this.router.navigate(['charts', pseudo]);
+ }
 
 }

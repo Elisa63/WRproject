@@ -7,7 +7,7 @@ import { ChartsComponent } from './charts/charts.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
-  { path: 'charts/:name', component: ChartsComponent },
+  { path: 'charts/:pseudo', component: ChartsComponent },
 
 
 
