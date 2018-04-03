@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-pseudo-form',
   templateUrl: './pseudo-form.component.html',
@@ -9,10 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PseudoFormComponent implements OnInit {
 
   rForm: FormGroup;
-  post:any;
-  name:string = '';
+  nameText:string = 'Mon Pseudo';
+  name = [];
+  btnText: 'Submit';
   titleAlert:string = 'Pseudo is required';
-
 
   constructor(private fb: FormBuilder) {
       this.rForm = fb.group({
@@ -26,9 +26,15 @@ export class PseudoFormComponent implements OnInit {
 
   }
 
-  addPost(post) {
-   this.name = post.name;
-    this.rForm.get('submit').valueChanges.subscribe(
+
+
+  addPseudo() {
+  /*alert(this.fb['name']);*/
+  this.name.push(this.nameText);
+  this.nameText = '';
+  /* console.log(this.rForm.get('name'));*/
+
+  /*  this.rForm.get('submit').valueChanges.subscribe(
       (submit) => {
         if (submit == 'name') {
             this.rForm.get('name').setValidators([Validators.required]),
@@ -39,5 +45,6 @@ export class PseudoFormComponent implements OnInit {
       this.rForm.get('name').updateValueAndValidity();
       }
     )
-  }
+*/ }
+
 }

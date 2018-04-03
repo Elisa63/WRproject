@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
+/*  summonerWin() {
+    return this._http.get()
+    .map(result =>result)
+  }
+*/
 }

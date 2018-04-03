@@ -1,0 +1,8 @@
+<div class="radarchart">
+  <canvas baseChart width="300" height="150"
+          [datasets]="radarChartData"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
 
 
 import { AppComponent } from './app.component';
@@ -10,7 +11,11 @@ import { ChartsComponent } from './charts/charts.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PseudoFormComponent } from './pseudo-form/pseudo-form.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './data.service';
+import { RadarchartComponent } from './radarchart/radarchart.component';
+import { LinechartComponent } from './linechart/linechart.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,11 @@ import { PseudoFormComponent } from './pseudo-form/pseudo-form.component';
     HomeComponent,
     ChartsComponent,
     NavBarComponent,
-    PseudoFormComponent
+    PseudoFormComponent,
+    RadarchartComponent,
+    LinechartComponent,
+    BoardComponent,
+
   ],
 
   imports: [
@@ -26,10 +35,15 @@ import { PseudoFormComponent } from './pseudo-form/pseudo-form.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ChartsModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    DataService,
+  ],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
