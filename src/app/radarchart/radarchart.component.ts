@@ -38,18 +38,12 @@ export class RadarchartComponent implements OnInit {
         .subscribe((res: Summoner) => {
           console.log(res.summoner_in_matchs);
 
-
-
-          let SummonerInMatch : Array<number>;
-          for(let dataWinRate of SummonerInMatch res=> {
-          dataWinRate.push("TOP")
-
-          }
+          let dataWinrate = [5, 4, 6, 7, 8];
 
 
 
           this.radarChartData = [
-            {data: summoner_in_match, label: 'Winrate '},
+            {data: dataWinrate, label: 'Winrate '},
           ];
 
         })
