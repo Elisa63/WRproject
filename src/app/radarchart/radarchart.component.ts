@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataService, SummonerInMatch, Summoner  } from '../data.service';
 import { Chart } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
 
@@ -9,11 +9,13 @@ import { ChartsModule } from 'ng2-charts';
   styleUrls: ['./radarchart.component.scss']
 })
 export class RadarchartComponent implements OnInit {
-  public radarChartLabels:string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  @Input() public pseudo: string;
+
+  public radarChartLabels:string[] = ['TOP', 'jungle', 'Carry AP', 'Support', 'Carry AD'];
 
  public radarChartData:any = [
-   {data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A'},
-   {data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B'}
+
+      {data: [], label: 'Winrate '},
  ];
  public radarChartType:string = 'radar';
 
@@ -27,9 +29,29 @@ export class RadarchartComponent implements OnInit {
  }
 
 
-  constructor() { }
 
-  ngOnInit() {
+
+  constructor(private data : DataService) { }
+
+    ngOnInit() {
+      this.data.Summoner(this.pseudo)
+        .subscribe((res: Summoner) => {
+          console.log(res.summoner_in_matchs);
+
+
+
+          let SummonerInMatch : Array<number>;
+          for(let dataWinRate of SummonerInMatch res=> {
+          dataWinRate.push("TOP")
+
+          }
+
+
+
+          this.radarChartData = [
+            {data: summoner_in_match, label: 'Winrate '},
+          ];
+
+        })
+    }
   }
-
-}
