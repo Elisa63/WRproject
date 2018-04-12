@@ -52,7 +52,7 @@ export interface SummonerInMatch {
   deaths: number,
   assists: number,
   summoner: string,
-  match_summoner: string,
+  match_summoner: MatchSummoner,
 
 }
 

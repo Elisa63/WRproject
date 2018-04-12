@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService, Champion, Summoner, MatchSummoner, SummonerInMatch } from '../data.service';
+import { Chart } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
-
 
 @Component({
   selector: 'app-board',
@@ -9,33 +9,36 @@ import { ChartsModule } from 'ng2-charts';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+  @Input() public pseudo: string;
   public lineChartData:Array<any> = [
-   {data: [], label: 'SummonerGame'},
+   {data: [] , label: 'SummonerGame'},
  ];
  public lineChartLabels:Array<any> = ['Game #', 'Game Type', 'Champion', 'Kills', 'Deaths', 'Assists',
  'Win' ];
   public lineChartOptions:any = {
     responsive: true
   };
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
-  }
 
- public retrieveData(DataService, Champion, Summoner, MatchSummoner, SummonerInMatch ) {
-    let retridata: [number, string, string, number, number, number, boolean ];
-    for(let value of Summoner.summoner_in_matchs){
-        value =+ 1;
-        value.match_summoner.game_type;
-        value.champion;
-        value.kills;
-        value.deaths;
-        value.assists;
-        value.win;
-    }
+      this.data.Summoner(this.pseudo)
+          .subscribe((res: Summoner) => {
+              let data: [string, string, number, number, number, boolean ];
+              for(let value of res.summoner_in_matchs.slice(0, 20)){
+                  data.push(value.match_summoner.game_type);
+                  data.push(value.champion);
+                  data.push(value.kills);
+                  data.push(value.deaths);
+                  data.push(value.assists);
+                  data.push(value.win)
+              }
+              this.lineChartData = [
+                  {data: this.data, label: 'SummonerGame'},
+              ];
 
-    let data = retridata.splice(20, retridata.length - 1)
-    return data;
+          })
+    };
 }
 
-}
+
