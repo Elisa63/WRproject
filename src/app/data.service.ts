@@ -46,7 +46,7 @@ export interface SummonerInMatch {
   id: number,
   role: string,
   lane: string,
-  champion: string,
+  champion: Champion,
   win: boolean,
   kills: number,
   deaths: number,
@@ -75,6 +75,6 @@ export class DataService {
      }),
    };
 
-    return this._http.get<Summoner>("http://localhost/Symfony_Wrush-master/web/app_dev.php/api/summoners/"+pseudo+"/by-name", httpOptions);
+    return this._http.get<Summoner>("http://localhost/wrush/symfony_wrush/web/app_dev.php/api/summoners/"+pseudo+"/by-name", httpOptions);
   }
 }
