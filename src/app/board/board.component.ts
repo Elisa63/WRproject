@@ -13,8 +13,7 @@ export class BoardComponent implements OnInit {
   public lineChartData:Array<any> = [
    {data: [] , label: 'SummonerGame'},
  ];
- public lineChartLabels:Array<any> = ['Game #', 'Game Type', 'Champion', 'Kills', 'Deaths', 'Assists',
- 'Win' ];
+ public lineChartLabels:Array<any> = ['Game Type', 'Champion', 'Kills', 'Deaths', 'Assists', 'Win' ];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -24,18 +23,20 @@ export class BoardComponent implements OnInit {
 
       this.data.Summoner(this.pseudo)
           .subscribe((res: Summoner) => {
-              let data: [string, string, number, number, number, boolean ];
+              let retrieveData: Array<[string, string, number, number, number, boolean]> = [] ;
+
               for(let value of res.summoner_in_matchs.slice(0, 20)){
+                  let data: [string, string, number, number, number, boolean] = [];
                   data.push(value.match_summoner.game_type);
-                  data.push(value.champion);
+                  data.push(value.champion.name);
                   data.push(value.kills);
                   data.push(value.deaths);
                   data.push(value.assists);
-                  data.push(value.win)
+                  data.push(value.win);
+                  retrieveData.push(data);
               }
-              this.lineChartData = [
-                  {data: this.data, label: 'SummonerGame'},
-              ];
+              console.log(retrieveData);
+              this.lineChartData = retrieveData;
 
           })
     };

@@ -36,11 +36,9 @@ export class RadarchartComponent implements OnInit {
     ngOnInit() {
       this.data.Summoner(this.pseudo)
         .subscribe((res: Summoner) => {
-          console.log(res.summoner_in_matchs);
+          //console.log(res.summoner_in_matchs);
 
           let dataWinrate = [5, 4, 6, 7, 8];
-
-
 
           this.radarChartData = [
             {data: dataWinrate, label: 'Winrate '},
