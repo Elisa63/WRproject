@@ -28,7 +28,7 @@ export interface Summoner {
   level: number,
   league_point: number,
   season_tier: string,
-  revision_date: DateTimeFormat[],
+  revision_date: Date,
   user: string,
   summoner_in_matchs: SummonerInMatch[],
 }
@@ -46,9 +46,11 @@ export interface SummonerInMatch {
   id: number,
   role: string,
   lane: string,
+  champion: string,
   win: boolean,
   kills: number,
   deaths: number,
+  assists: number,
   summoner: string,
   match_summoner: string,
 
