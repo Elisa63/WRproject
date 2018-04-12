@@ -38,14 +38,45 @@ export class RadarchartComponent implements OnInit {
         .subscribe((res: Summoner) => {
           console.log(res.summoner_in_matchs);
 
-          let dataWinrate = [5, 4, 6, 7, 8];
+          let dataWinrate: Array<number> = [];
+
+          let x: number = 0;
+          let y: number = 0;
+          let z: number = 0;
+          let a: number = 0;
+          let b: number = 0;
 
 
+          for(let values of res.summoner_in_matchs ) {
+            console.log(values);
+
+            if(values.role == "SOLO" || values.lane == "TOP" && values.win == true){
+              x++;
+            }
+            if( values.role == "SOLO" || values.lane == "JUNGLE" && values.win == true){
+              y++;
+            }
+            if( values.role == "SOLO" || values.lane == "MID" && values.win == true)   {
+              z++;
+            }
+            if(values.role == "DUO_SUPPORT" || values.lane == "BOTTOM" && values.win == true){
+              a++;
+            }
+            if(values.role == "DUO_CARRY" || values.lane == "BOTTOM" && values.win == true){
+              b++;
+            }
+          }
+
+          dataWinrate.push(x);
+          dataWinrate.push(y);
+          dataWinrate.push(z);
+          dataWinrate.push(a);
+          dataWinrate.push(b);
 
           this.radarChartData = [
             {data: dataWinrate, label: 'Winrate '},
           ];
 
         })
-    }
-  }
+    };
+}
