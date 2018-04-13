@@ -28,57 +28,78 @@ export class RadarchartComponent implements OnInit {
    console.log(e);
  }
 
-
-
-
   constructor(private data : DataService) { }
 
     ngOnInit() {
       this.data.Summoner(this.pseudo)
         .subscribe((res: Summoner) => {
-          //console.log(res.summoner_in_matchs);
+          console.log(res.summoner_in_matchs);
 
-<<<<<<< HEAD
-          let dataWinrate: Array<number> = [];
-
-          let x: number = 0;
-          let y: number = 0;
-          let z: number = 0;
-          let a: number = 0;
-          let b: number = 0;
+          let ratio: Array<number> = [];
 
 
-          for(let values of res.summoner_in_matchs ) {
-            console.log(values);
+          let top: number = 0;
+          let jungle: number = 0;
+          let carry_ap: number = 0;
+          let support: number = 0;
+          let carry_ad: number = 0;
+          let top_total: number = 0;
+          let jungle_total: number = 0;
+          let carry_ap_total: number = 0;
+          let support_total: number = 0;
+          let carry_ad_total: number = 0;
 
-            if(values.role == "SOLO" || values.lane == "TOP" && values.win == true){
-              x++;
+
+          for(let values of res.summoner_in_matchs) {
+            if(values.role == "SOLO" || values.lane == "TOP"){
+              top_total++;
+
+              if (values.win == true){
+                top++;
+              }
             }
-            if( values.role == "SOLO" || values.lane == "JUNGLE" && values.win == true){
-              y++;
+
+            if( values.role == "SOLO" || values.lane == "JUNGLE"){
+              jungle_total++;
+
+              if(values.win == true){
+                jungle++;
+              }
+
             }
-            if( values.role == "SOLO" || values.lane == "MID" && values.win == true)   {
-              z++;
+
+            if( values.role == "SOLO" || values.lane == "MID") {
+              carry_ap_total++;
+
+              if( values.win == true) {
+                carry_ap++;
+              }
             }
-            if(values.role == "DUO_SUPPORT" || values.lane == "BOTTOM" && values.win == true){
-              a++;
+            if(values.role == "DUO_SUPPORT" || values.lane == "BOTTOM") {
+              support_total++;
+
+              if(values.win == true){
+                support_total++
+              }
             }
-            if(values.role == "DUO_CARRY" || values.lane == "BOTTOM" && values.win == true){
-              b++;
+
+            if(values.role == "DUO_CARRY" || values.lane == "BOTTOM") {
+              carry_ad_total++;
+
+              if(values.win == true)
+                carry_ad++
             }
           }
 
-          dataWinrate.push(x);
-          dataWinrate.push(y);
-          dataWinrate.push(z);
-          dataWinrate.push(a);
-          dataWinrate.push(b);
-=======
-          let dataWinrate = [5, 4, 6, 7, 8];
->>>>>>> 38b58dcd7a13a0718060d6c430dd9220ec391361
+          ratio.push(top/top_total);
+          ratio.push(jungle/jungle_total);
+          ratio.push(carry_ap/carry_ap_total);
+          ratio.push(support/support_total);
+          ratio.push(carry_ad/carry_ad_total);
 
-          this.radarChartData = [
-            {data: dataWinrate, label: 'Winrate '},
+              this.radarChartData = [
+                  {data: ratio, label: 'Winrate '}
+
           ];
 
         })
