@@ -57,9 +57,13 @@ export class LinechartComponent implements OnInit {
                 j = j + i;
                 data.push(j);
             }
-            console.log(retrieveData);
-            this.lineChartData = data;
-            this.lineChartLabels = retrieveData;
+            
+            this.lineChartData = [
+                {data: data, label: 'WinProgress '}
+            ];
+            this.lineChartLabels = [
+                {data: retrieveData, label: 'Date '}
+            ];
 
       })
 

@@ -36,7 +36,9 @@ export class BoardComponent implements OnInit {
                   retrieveData.push(data);
               }
               console.log(retrieveData);
-              this.lineChartData = retrieveData;
+              this.lineChartData = [
+                  {data: retrieveData, label: 'Stats'}
+              ];
 
           })*/
     };
