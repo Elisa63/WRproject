@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService, Summoner } from '../data.service';
 import { Chart } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
@@ -10,13 +10,15 @@ import { ChartsModule } from 'ng2-charts';
   styleUrls: ['./linechart.component.scss']
 })
 export class LinechartComponent implements OnInit {
-
+  @Input() public pseudo: string;
   public lineChartData:Array<any> = [
     {data: [], label:'Summoner' },
   ];
- public lineChartLabels:Array<any> = [];
+ public lineChartLabels:Array<any> = [
+   {data: [], label: 'MatchDate'},
+ ];
   public lineChartOptions:any = {
-    responsive: true
+    responsive: true,
   };
   public lineChartColors:Array<any> = [
 
@@ -38,16 +40,28 @@ export class LinechartComponent implements OnInit {
   constructor(private data: DataService ) { }
 
   ngOnInit() {
-    /*
-    this.data.Summoner("")
-      .subscribe((res: number[] ) => {
-        console.log(res)
 
-        this.lineChartData = [
-          {data: res, label:[]},
-        ];
+    this.data.Summoner(this.pseudo)
+        .subscribe((res: Summoner) => {
+            let data: [number];
+            let retrieveData: [any];
+            let i: number = 0;
+            let j: number = 0;
+            for (let value of res.summoner_in_matchs.slice(0, 20)) {
+                retrieveData.push(value.match_summoner.game_creation);
+                if(value.win == true){
+                  i =+ 1;
+                } else {
+                  i =- 1;
+                }
+                j = j + i;
+                data.push(j);
+            }
+            console.log(retrieveData);
+            this.lineChartData = data;
+            this.lineChartLabels = retrieveData;
 
       })
-      */
+
   }
 }

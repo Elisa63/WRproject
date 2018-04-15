@@ -36,7 +36,7 @@ export interface Summoner {
 export interface MatchSummoner {
   id: string,
   game_type: string,
-  game_creation: string[],
+  game_creation: Date,
   participants_identities:string[]
   summoner_in_match: string[],
 }

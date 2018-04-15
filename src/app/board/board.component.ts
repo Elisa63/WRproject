@@ -21,12 +21,12 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
 
-      this.data.Summoner(this.pseudo)
+      /*this.data.Summoner(this.pseudo)
           .subscribe((res: Summoner) => {
-              let retrieveData: Array<[string, string, number, number, number, boolean]> = [] ;
+              let retrieveData: [] = [] ;
 
               for(let value of res.summoner_in_matchs.slice(0, 20)){
-                  let data: [string, string, number, number, number, boolean] = [];
+                  let data: [] = [];
                   data.push(value.match_summoner.game_type);
                   data.push(value.champion.name);
                   data.push(value.kills);
@@ -38,8 +38,6 @@ export class BoardComponent implements OnInit {
               console.log(retrieveData);
               this.lineChartData = retrieveData;
 
-          })
+          })*/
     };
 }
-
-
