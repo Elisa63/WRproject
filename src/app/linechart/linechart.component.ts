@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService, Summoner } from '../data.service';
+import { DataService, Summoner, SummonerInMatch, MatchSummoner } from '../data.service';
 import { Chart } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
 
@@ -11,10 +11,11 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class LinechartComponent implements OnInit {
   @Input() public pseudo: string;
-  public lineChartData:Array<any> = [
+
+  public lineChartData: any = [
     {data: [], label:'Summoner' },
   ];
- public lineChartLabels:Array<any> = [
+ public lineChartLabels: any = [
    {data: [], label: 'MatchDate'},
  ];
   public lineChartOptions:any = {
@@ -37,18 +38,24 @@ export class LinechartComponent implements OnInit {
 
 
 
+
+
+
+
   constructor(private data: DataService ) { }
 
   ngOnInit() {
 
-    this.data.Summoner(this.pseudo)
+  this.data.Summoner(this.pseudo)
         .subscribe((res: Summoner) => {
-            let data: [number];
-            let retrieveData: [any];
+          console.log(res.summoner_in_matchs);
+
+            let data: Array<number> = [];
+            let datesdata: Array<Date> = [];
             let i: number = 0;
             let j: number = 0;
             for (let value of res.summoner_in_matchs.slice(0, 20)) {
-                retrieveData.push(value.match_summoner.game_creation);
+                datesdata.push(value.match_summoner.game_creation );
                 if(value.win == true){
                   i =+ 1;
                 } else {
@@ -57,11 +64,13 @@ export class LinechartComponent implements OnInit {
                 j = j + i;
                 data.push(j);
             }
-            console.log(retrieveData);
-            this.lineChartData = data;
-            this.lineChartLabels = retrieveData;
 
-      })
-
-  }
+            this.lineChartData = [
+              {data : data, label: 'MatchProgress'}
+            ]
+            this.lineChartLabels = [
+              { data: datesdata, label: 'MatchDate'}
+            ]
+      });
+    }
 }
