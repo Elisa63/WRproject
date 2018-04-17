@@ -75,7 +75,7 @@ export class RadarchartComponent implements OnInit {
                             carry_ap++;
                         }
                     }
-                    if(values.role == "DUO_SUPPORT" || values.lane == "BOTTOM") {
+                    if(values.role == "DUO_SUPPORT" && values.lane == "BOTTOM") {
                         support_total++;
 
                         if(values.win == true){
@@ -83,7 +83,7 @@ export class RadarchartComponent implements OnInit {
                         }
                     }
 
-                    if(values.role == "DUO_CARRY" || values.lane == "BOTTOM") {
+                    if(values.role == "DUO_CARRY" && values.lane == "BOTTOM") {
                         carry_ad_total++;
 
                         if(values.win == true)
@@ -91,11 +91,11 @@ export class RadarchartComponent implements OnInit {
                     }
                 }
 
-                ratio.push(top/top_total);
-                ratio.push(jungle/jungle_total);
-                ratio.push(carry_ap/carry_ap_total);
-                ratio.push(support/support_total);
-                ratio.push(carry_ad/carry_ad_total);
+                ratio.push(top/top_total*100);
+                ratio.push(jungle/jungle_total*100);
+                ratio.push(carry_ap/carry_ap_total*100);
+                ratio.push(support/support_total*100);
+                ratio.push(carry_ad/carry_ad_total*100);
 
                 this.radarChartData = [
                     {data: ratio, label: 'Winrate '}

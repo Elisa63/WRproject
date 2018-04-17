@@ -48,3 +48,4 @@ src/app/charts/charts.component.html
 src/app/data.service.ts
 src/app/data.service.ts
 src/app/data.service.ts
+src/app/linechart/linechart.component.ts
