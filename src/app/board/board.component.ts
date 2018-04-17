@@ -23,10 +23,10 @@ export class BoardComponent implements OnInit {
 
       /*this.data.Summoner(this.pseudo)
           .subscribe((res: Summoner) => {
-              let retrieveData: [] = [] ;
+              let retrieveData:Array<any> = [];
 
               for(let value of res.summoner_in_matchs.slice(0, 20)){
-                  let data: [] = [];
+                  let data:Array<any> = [];
                   data.push(value.match_summoner.game_type);
                   data.push(value.champion.name);
                   data.push(value.kills);

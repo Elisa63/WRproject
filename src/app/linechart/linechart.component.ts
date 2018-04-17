@@ -12,12 +12,10 @@ import { ChartsModule } from 'ng2-charts';
 export class LinechartComponent implements OnInit {
   @Input() public pseudo: string;
   public lineChartData:Array<any> = [
-    {data: [], label:'Summoner' },
+    {data: [], label:'Progress' },
   ];
- public lineChartLabels:Array<any> = [
-   {data: [], label: 'MatchDate'},
- ];
-  public lineChartOptions:any = {
+ public lineChartLabels:Array<Date> = [];
+ public lineChartOptions:any = {
     responsive: true,
   };
   public lineChartColors:Array<any> = [
@@ -43,12 +41,13 @@ export class LinechartComponent implements OnInit {
 
     this.data.Summoner(this.pseudo)
         .subscribe((res: Summoner) => {
-            let data: [number];
-            let retrieveData: [any];
+            let data: Array<number> = [];
+
             let i: number = 0;
             let j: number = 0;
+
             for (let value of res.summoner_in_matchs.slice(0, 20)) {
-                retrieveData.push(value.match_summoner.game_creation);
+                this.lineChartLabels.push(value.match_summoner.game_creation);
                 if(value.win == true){
                   i =+ 1;
                 } else {
@@ -57,13 +56,7 @@ export class LinechartComponent implements OnInit {
                 j = j + i;
                 data.push(j);
             }
-            
-            this.lineChartData = [
-                {data: data, label: 'WinProgress '}
-            ];
-            this.lineChartLabels = [
-                {data: retrieveData, label: 'Date '}
-            ];
+            this.lineChartData = [{data: data  }] ;
 
       })
 
