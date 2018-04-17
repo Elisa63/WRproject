@@ -75,6 +75,6 @@ export class DataService {
      }),
    };
 
-    return this._http.get<Summoner>("http://localhost/wrush/symfony_wrush/web/app_dev.php/api/summoners/"+pseudo+"/by-name", httpOptions);
+    return this._http.get<Summoner>("http://localhost/symfony_wrush-master/web/app_dev.php/api/summoners/"+pseudo+"/by-name", httpOptions);
   }
 }
