@@ -10,10 +10,8 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class BoardComponent implements OnInit {
   @Input() public pseudo: string;
-  public lineChartData:Array<any> = [
-   {data: [] , label: 'SummonerGame'},
- ];
- public lineChartLabels:Array<any> = ['Game Type', 'Champion', 'Kills', 'Deaths', 'Assists', 'Win' ];
+  public boardData:Array<any> = [];
+ public boardLabels:Array<any> = ['Game Type', 'Champion', 'Kills', 'Deaths', 'Assists', 'Win'];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -21,10 +19,8 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
 
-      /*this.data.Summoner(this.pseudo)
+      this.data.Summoner(this.pseudo)
           .subscribe((res: Summoner) => {
-              let retrieveData:Array<any> = [];
-
               for(let value of res.summoner_in_matchs.slice(0, 20)){
                   let data:Array<any> = [];
                   data.push(value.match_summoner.game_type);
@@ -33,13 +29,8 @@ export class BoardComponent implements OnInit {
                   data.push(value.deaths);
                   data.push(value.assists);
                   data.push(value.win);
-                  retrieveData.push(data);
+                  this.boardData.push(data);
               }
-              console.log(retrieveData);
-              this.lineChartData = [
-                  {data: retrieveData, label: 'Stats'}
-              ];
-
-          })*/
+          })
     };
 }

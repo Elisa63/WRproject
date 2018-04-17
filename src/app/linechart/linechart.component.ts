@@ -17,6 +17,7 @@ export class LinechartComponent implements OnInit {
  public lineChartLabels:Array<Date> = [];
  public lineChartOptions:any = {
     responsive: true,
+
   };
   public lineChartColors:Array<any> = [
 
@@ -47,7 +48,7 @@ export class LinechartComponent implements OnInit {
             let j: number = 0;
 
             for (let value of res.summoner_in_matchs.slice(0, 20)) {
-                this.lineChartLabels.push(value.match_summoner.game_creation);
+                this.lineChartLabels.unshift(value.match_summoner.game_creation);
                 if(value.win == true){
                   i =+ 1;
                 } else {

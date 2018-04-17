@@ -45,3 +45,4 @@ src/app/data.service.ts
 src/app/board/board.component.html
 src/app/board/board.component.ts
 src/app/charts/charts.component.html
+src/app/radarchart/radarchart.component.ts
