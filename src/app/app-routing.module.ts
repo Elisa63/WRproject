@@ -9,9 +9,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'charts/:pseudo', component: ChartsComponent },
 
-
-
-
 ];
 
 @NgModule({

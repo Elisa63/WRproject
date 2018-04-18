@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService, Summoner } from '../data.service';
+import { DataService, Summoner, SummonerInMatch, MatchSummoner } from '../data.service';
 import { Chart } from 'chart.js';
 import { ChartsModule } from 'ng2-charts';
-
 
 @Component({
   selector: 'app-linechart',
@@ -11,13 +10,11 @@ import { ChartsModule } from 'ng2-charts';
 })
 export class LinechartComponent implements OnInit {
   @Input() public pseudo: string;
-  public lineChartData:Array<any> = [
-    {data: [], label:'Progress' },
-  ];
- public lineChartLabels:Array<Date> = [];
- public lineChartOptions:any = {
-    responsive: true,
 
+  public lineChartData:Array<number> = [];
+  public lineChartLabels:Array<string> = [];
+  public lineChartOptions:any = {
+    responsive: true,
   };
   public lineChartColors:Array<any> = [
 
@@ -34,32 +31,28 @@ export class LinechartComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
 
-
-
   constructor(private data: DataService ) { }
 
   ngOnInit() {
 
-    this.data.Summoner(this.pseudo)
+  this.data.Summoner(this.pseudo)
         .subscribe((res: Summoner) => {
-            let data: Array<number> = [];
-
+          console.log(res.summoner_in_matchs);
+          
             let i: number = 0;
             let j: number = 0;
 
             for (let value of res.summoner_in_matchs.slice(0, 20)) {
-                this.lineChartLabels.unshift(value.match_summoner.game_creation);
+                let date: Date = new Date(value.match_summoner.game_creation);
+                this.lineChartLabels.unshift(date.toLocaleString());
                 if(value.win == true){
                   i =+ 1;
                 } else {
                   i =- 1;
                 }
                 j = j + i;
-                data.push(j);
+                this.lineChartData.unshift(j);
             }
-            this.lineChartData = [{data: data  }] ;
-
-      })
-
-  }
+      });
+    }
 }
