@@ -10,6 +10,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.0",

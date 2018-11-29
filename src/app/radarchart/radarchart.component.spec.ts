@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadarchartComponent } from "./radarchart.component";
+import { RadarchartComponent } from './radarchart.component';
 
-describe("RadarchartComponent", () => {
+describe('RadarchartComponent', () => {
   let component: RadarchartComponent;
   let fixture: ComponentFixture<RadarchartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RadarchartComponent]
+      declarations: [RadarchartComponent],
     }).compileComponents();
   }));
 
@@ -18,7 +18,7 @@ describe("RadarchartComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
