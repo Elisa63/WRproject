@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PseudoFormComponent } from './pseudo-form.component';
+import { PseudoFormComponent } from "./pseudo-form.component";
 
-describe('PseudoFormComponent', () => {
+describe("PseudoFormComponent", () => {
   let component: PseudoFormComponent;
   let fixture: ComponentFixture<PseudoFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PseudoFormComponent ]
-    })
-    .compileComponents();
+      declarations: [PseudoFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('PseudoFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
