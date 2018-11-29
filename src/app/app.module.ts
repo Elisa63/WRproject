@@ -27,7 +27,6 @@ import { BoardComponent } from './board/board.component';
     LinechartComponent,
     BoardComponent,
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,

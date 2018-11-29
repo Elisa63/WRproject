@@ -64,7 +64,6 @@ export class DataService {
         Accept: 'application/json',
       }),
     };
-
     return this._http.get<Summoner>(
       'http://localhost/wrush/symfony_wrush/web/app_dev.php/api/summoners/' + pseudo + '/by-name',
       httpOptions,

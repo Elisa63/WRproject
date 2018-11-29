@@ -73,7 +73,7 @@ export class RadarchartComponent implements OnInit {
       ratio.push((support / support_total) * 100);
       ratio.push((carry_ad / carry_ad_total) * 100);
 
-      this.radarChartData = [{ data: ratio, label: 'Winrate ' }];
+      this.radarChartData = [{ data: ratio, label: 'Winrate' }];
     });
   }
 }

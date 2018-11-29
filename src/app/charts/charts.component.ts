@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, Summoner } from '../data.service';
-import { Chart } from 'chart.js';
-import { ChartsModule } from 'ng2-charts';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-charts',
@@ -16,7 +13,7 @@ export class ChartsComponent implements OnInit {
   revisionDate: string;
   profilIcon: string;
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
+  constructor(public route: ActivatedRoute, private data: DataService) {
     route.params.map(p => p.pseudo).subscribe(pseudo => {
       this.pseudo = pseudo;
     });
