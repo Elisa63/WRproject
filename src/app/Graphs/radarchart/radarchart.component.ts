@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService, SummonerInMatch, Summoner } from '../data.service';
-import { Chart } from 'chart.js';
-import { ChartsModule } from 'ng2-charts';
+import { DataService } from '../services/data.service';
+import { Summoner } from '../interfaces/Data_interface';
 
 @Component({
   selector: 'app-radarchart',
@@ -66,13 +65,11 @@ export class RadarchartComponent implements OnInit {
           }
         }
       }
-
       ratio.push((top / top_total) * 100);
       ratio.push((jungle / jungle_total) * 100);
       ratio.push((carry_ap / carry_ap_total) * 100);
       ratio.push((support / support_total) * 100);
       ratio.push((carry_ad / carry_ad_total) * 100);
-
       this.radarChartData = [{ data: ratio, label: 'Winrate' }];
     });
   }

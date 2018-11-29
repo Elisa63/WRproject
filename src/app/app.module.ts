@@ -5,15 +5,15 @@ import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ChartsComponent } from './charts/charts.component';
+import { HomeComponent } from '../app/dashboard/home/home.component';
+import { ChartsComponent } from '../app/Graphs/charts/charts.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { PseudoFormComponent } from './pseudo-form/pseudo-form.component';
+import { NavBarComponent } from '../app/dashboard/nav-bar/nav-bar.component';
+import { PseudoFormComponent } from '../app/dashboard/pseudo-form/pseudo-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './data.service';
-import { RadarchartComponent } from './radarchart/radarchart.component';
-import { LinechartComponent } from './linechart/linechart.component';
+import { DataService } from './services/data.service';
+import { RadarchartComponent } from '../app/Graphs/radarchart/radarchart.component';
+import { LinechartComponent } from '../app/Graphs/linechart/linechart.component';
 import { BoardComponent } from './board/board.component';
 
 @NgModule({

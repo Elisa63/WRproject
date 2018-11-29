@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService, Summoner, SummonerInMatch, MatchSummoner } from '../data.service';
-import { Chart } from 'chart.js';
-import { ChartsModule } from 'ng2-charts';
+import { DataService  } from '../../services/data.service';
+import { Summoner } from '../../interfaces/Data_interface';
 
 @Component({
   selector: 'app-linechart',

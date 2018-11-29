@@ -1,8 +1,3 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
-
 export interface Champion {
   id: number;
   name: string;
@@ -52,21 +47,4 @@ export interface Winrate {
   summoner: Summoner;
   win: boolean;
   label: string;
-}
-
-@Injectable()
-export class DataService {
-  constructor(private _http: HttpClient) {}
-
-  Summoner(pseudo: string): Observable<Summoner> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Accept: 'application/json',
-      }),
-    };
-    return this._http.get<Summoner>(
-      'http://localhost/wrush/symfony_wrush/web/app_dev.php/api/summoners/' + pseudo + '/by-name',
-      httpOptions,
-    );
-  }
 }
