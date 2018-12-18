@@ -1,9 +1,28 @@
-
-<h3> {{ pseudo }}</h3>
-<div> {{ level }} </div>
-<div> {{ revisionDate }} </div>
-<div> {{ profilIcon }} </div>
-<img src="{{profilIcon}}">
-<app-radarchart [pseudo]="pseudo"></app-radarchart>
-<app-linechart></app-linechart>
-<app-board [pseudo]="pseudo"></app-board>
+<div class="profile">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>{{ pseudo }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="image">
+            <img src="{{profilIcon}}" />
+            <div>{{ profilIcon }}</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div>{{ level }}</div>
+          <div>{{ revisionDate }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"><app-radarchart [pseudo]="pseudo"></app-radarchart></div>
+    <div class="col-sm-4"><app-linechart [pseudo]="pseudo"></app-linechart></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12"><app-board [pseudo]="pseudo"></app-board></div>
+  </div>
+</div>

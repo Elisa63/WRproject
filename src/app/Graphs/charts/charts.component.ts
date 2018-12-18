@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Summoner } from '../interfaces/Data_interface';
+import { Summoner } from '../../interfaces/Data_interface';
 
 @Component({
   selector: 'app-charts',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { Summoner } from '../interfaces/Data_interface';
+import { DataService } from '../../services/data.service';
+import { Summoner } from '../../interfaces/Data_interface';
 
 @Component({
   selector: 'app-radarchart',

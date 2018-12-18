@@ -1,27 +1,33 @@
 <header>
-
-
-<div class="row">
-  <div class="col-md">
-    <div class="logo">
-      <a href="index.html"><img src="assets/img/headerLogo.png" class="image"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+      <div class="logo">
+        <a href="index.html"><img src="assets/img/headerLogo.png" class="image"/></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
+      </div>
+    </div>
+    <div class="col-sm-4 offset-sm-2">
+      <div class="row ">
+        <div class="col-sm-12 account">
+          <div class="row">
+            <div class="col-sm-3 offset-sm-3"><a class="sign active">sign in</a></div>
+            <div class="col-sm-2"><a class="register">Register</a></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><app-pseudo-form></app-pseudo-form></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-  <div>
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link active">sign in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Register</a>
-      </li>
-    </ul>
-  </div>
-  <div class="navbar-right " >
-      <app-pseudo-form></app-pseudo-form>
-    </div>
-  </header>
+</header>
